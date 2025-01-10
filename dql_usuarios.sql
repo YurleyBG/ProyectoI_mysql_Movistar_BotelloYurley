@@ -21,7 +21,7 @@ SHOW GRANTS FOR 'Encargado de Reportes'@'localhost';
 -- usuario Gestor de Servicios con CRUD de servicios ofrecidos por la empresa.
 
 CREATE USER 'Gestor de Servicios'@'localhost' IDENTIFIED BY 'GeSe123';
-GRANT create,select,delete,update ON Movistar.servicios TO 'Gestor de Servicios'@'localhost';
+GRANT insert,select,delete,update ON Movistar.servicios TO 'Gestor de Servicios'@'localhost';
 SHOW GRANTS FOR 'Gestor de Servicios'@'localhost';
 
 -- usuario Encargado de Fidelización con Gestión de clientes leales y bonificaciones.
