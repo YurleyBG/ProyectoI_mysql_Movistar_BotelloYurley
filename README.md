@@ -28,15 +28,16 @@ para ejecutar cada archivo deberas hacerlo con el rayito en la parte superior.
 
 # Consultas
 Se trata de una forma de acceder a las bases de datos y de realizar operaciones basica y complejas.
-`
- mostrar los nombres y apellidos de todas las clientes mujeres.
-select Nombre1,Nombre2,Apellido1, Apellido2 from clientes where sexo ='F';
-select id, precio_total_compra from (select rc.id, p.precio*s.precio as precio_total_compra from registro_compras rc inner join servicios s
-on rc.id_servicios=s.id inner join planes p on rc.id_plan=p.id )as obtener;
-`
+
+``` sql
+	 mostrar los nombres y apellidos de todas las clientes mujeres.
+	select Nombre1,Nombre2,Apellido1, Apellido2 from clientes where sexo ='F';
+	select id, precio_total_compra from (select rc.id, p.precio*s.precio as precio_total_compra from registro_compras rc inner join servicios s
+	on rc.id_servicios=s.id inner join planes p on rc.id_plan=p.id )as obtener;
+```
 # Procedimientos
 Estan funciones buscan realizar acciones de manera ordenada  para obtener un resultado especificas como actualizar, eliminar o insertar nuevos datos.
-`
+```sql
   crear un procedimiento que permita insertar nuevas bonificaciones
   Delimiter //
   create procedure Agregarbonificacion(in Nombre varchar(30), Descripcion text,Estado ENUM('Pendiente', 'Expirada'),Fecha_inicio date,
@@ -46,11 +47,11 @@ Estan funciones buscan realizar acciones de manera ordenada  para obtener un res
   end // 
   Delimiter ;
   call Agregarbonificacion('Mega lunes', 'Doble de datos el lunes', 'Pendiente', '2025-01-03','2025-01-04' );
-`
+```
 
 # Triggers
  son objetos de base de datos que se activan cuando se produce un evento en una tabla
-`
+```sql
  crear un trigger que cambie el cargo de los empleados y los datos viejos sean añadidos al historial de ventas
  delimiter //
  create trigger actualizar_cargo_empleados
@@ -61,10 +62,10 @@ Estan funciones buscan realizar acciones de manera ordenada  para obtener un res
  end //
  delimiter ;
  update empleados  set cargo='Asesores de ventas' where id=1 ;
-`
+```
 # Eventos
 son tareas que se ejecutan de manera programada, es decir, según un cronograma predefinido. 
-`
+```sql
   crear un evento que utilice el anterior procedimiento (-- 1. crear un procedimiento que permita insertar nuevas bonificaciones) cada  semana
 delimiter //
 create event nuevas_bonificaciones
@@ -74,7 +75,7 @@ begin
 	call Agregarbonificacion('Mega sabado', 'Doble de datos el sabado', 'Expirada', '2025-01-03','2025-01-04' );
 end //
 delimiter ;
-`
+```
 # Creditos
 Este proyecto fue desarrollado por Yurley Botello Garcia.
 
